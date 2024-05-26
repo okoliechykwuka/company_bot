@@ -36,6 +36,8 @@ def parse_docs(files):
         result of this function will be cached and reused if the same input is passed
         again.
     """
+    os.environ["OPENAI_API_KEY"] = st.session_state.get("openai_api_key")
+
     app = App.from_config(config_path="config.yaml")
     for file in files:
         app.add(file, data_type="excel_file")
@@ -52,7 +54,7 @@ def request_files():
         qa_app (App): The application object with the parsed Excel files added.
     """
     openai_api_key = st.sidebar.text_input("OpenAI API Key", type="password")
-    openai.api_key = openai_api_key
+    st.session_state["openai_api_key"] = openai_api_key
     st.sidebar.info("[Get an OpenAI API key](https://platform.openai.com/account/api-keys) ")
     if not openai_api_key:
         st.sidebar.info("Please add your OpenAI API key to continue.")

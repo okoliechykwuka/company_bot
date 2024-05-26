@@ -1,0 +1,8 @@
+llm:
+  provider: openai
+  config:
+    model: 'gpt-3.5-turbo-1106'
+    temperature: 0.5
+    max_tokens: 1000
+    top_p: 1
+    stream: true

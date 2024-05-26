@@ -3,7 +3,6 @@ import os
 import openai
 import tempfile
 import streamlit as st
-from dotenv import load_dotenv, find_dotenv
 from langchain.memory.chat_message_histories import StreamlitChatMessageHistory
 import tempfile
 from embedchain import App
@@ -12,8 +11,7 @@ from embedchain import App
 st.set_page_config(page_title="LangChain: Chat with Excel", page_icon="🦜")
 st.title("🦜 LangChain: Chat with Excel Documents")
 #Loads environment variables such as API-KEY.
-_ = load_dotenv(find_dotenv())
-openai.api_key = os.getenv("OPENAI_API_KEY")
+
 
 
 @st.cache_resource
@@ -47,14 +45,15 @@ def parse_docs(files):
 @st.cache_resource(experimental_allow_widgets=True)       
 def request_files(): 
     """
-    Caches the function `request_files` using the `@st.cache_resource` decorator.
+    Caches the  function `request_files` using the `@st.cache_resource` decorator.
     This function prompts the user to enter their OpenAI API key and uploads Excel files.
     
     Returns:
         qa_app (App): The application object with the parsed Excel files added.
     """
     openai_api_key = st.sidebar.text_input("OpenAI API Key", type="password")
-    st.sidebar.info("[Get an OpenAI API key](https://platform.openai.com/account/api-keys)")
+    openai.api_key = openai_api_key
+    st.sidebar.info("[Get an OpenAI API key](https://platform.openai.com/account/api-keys) ")
     if not openai_api_key:
         st.sidebar.info("Please add your OpenAI API key to continue.")
         st.stop()    

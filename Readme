@@ -5,12 +5,12 @@
 
 1. create a python virtual environment
 2. cd to the environment
-3. run `pip install requirements.txt`
+3. run `pip install requirements.txt` to install libarie
 
 To test excel_chatbot.py
 
 1. run `streamlit run excel_chatbot.py` and visit http://localhost:8501/  to interact with the app
   - provide your api-key 
+  - upload excel files
+  - chat with your documents
 
-$ chainlit run qa.py -w
-$ navigate to http://localhost:8000/ to interact with the app

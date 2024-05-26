@@ -7,3 +7,4 @@ openpyxl
 xlrd
 unstructured
 networkx
+pysqlite3-binary

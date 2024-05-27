@@ -100,7 +100,7 @@ if user_query := st.chat_input(placeholder="Ask me anything!"):
     
     #AI Assistant message
     with st.chat_message("assistant"):
-        response = qa.query(user_query)
+        response = qa.chat(user_query)
         st.write(response)
         msgs.add_ai_message(response)
         
